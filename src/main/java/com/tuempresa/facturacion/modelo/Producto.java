@@ -24,6 +24,10 @@ public class Producto {
     @DescriptionsList
     private Categoria categoria;
     
+    @ManyToOne(fetch=FetchType.LAZY)
+    @DescriptionsList
+    Autor autor;
+    
     @Required
     @Stereotype("MONEY")
     private BigDecimal precio;
