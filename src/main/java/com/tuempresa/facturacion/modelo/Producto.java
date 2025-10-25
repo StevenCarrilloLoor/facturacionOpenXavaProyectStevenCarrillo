@@ -3,6 +3,7 @@ package com.tuempresa.facturacion.modelo;
 import java.math.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.openxava.annotations.*;
 
@@ -10,6 +11,9 @@ import lombok.*;
 
 @Entity
 @Getter @Setter
+@View(name="Simple",
+    members="numero, descripcion"
+)
 public class Producto {
     
     @Id
@@ -30,5 +34,6 @@ public class Producto {
     
     @Required
     @Stereotype("MONEY")
+    @DecimalMin(value="0.01", message="El precio debe ser mayor que cero")
     private BigDecimal precio;
 }
